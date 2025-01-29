@@ -17,7 +17,7 @@ https://YOUR_VPS_IP_ADDRESS:10000
 ### Configure Firewall:
 Run the following commands to allow Webmin through the firewall:
 ```sh
-ufw allow 100000 >>> 2083
+ufw allow 10000 >>> 2083
 ufw allow 2083
 ```
 Now, you can access Webmin using:
