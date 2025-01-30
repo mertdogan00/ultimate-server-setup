@@ -56,6 +56,7 @@ nano /etc/ssh/sshd_config
 Set:
 ```
 ChallengeResponseAuthentication yes
+KbdInteractiveAuthentication yes
 ```
 
 ### Restart SSH Service:
