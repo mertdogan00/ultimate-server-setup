@@ -62,6 +62,7 @@ KbdInteractiveAuthentication yes
 ### Restart SSH Service:
 ```sh
 sudo systemctl restart sshd.service
+sudo systemctl restart ssh.service
 ```
 
 ---
