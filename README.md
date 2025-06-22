@@ -1,83 +1,121 @@
-# Webmin + 2FA
-Webmin is a web-based interface for system administration for Unix. Follow these steps to install and configure it on your VPS.
+# 🌐 Webmin + 2FA Setup Guide
 
-### Steps:
+**Webmin** is a web-based interface for system administration on Unix-like systems. This guide will help you install Webmin, enable Two-Factor Authentication (2FA), and ensure secure access through your firewall and SSH.
+
+---
+
+## 🧱 Installation Steps
+
 ```sh
 curl -o webmin-setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repos.sh
 sh webmin-setup-repos.sh
-apt-get install webmin --install-recommends
+sudo apt update
+sudo apt install webmin --install-recommends
 ```
 
-### Access Webmin:
-After installation, access Webmin using your VPS IP address:
+---
+
+## 🌐 Access Webmin
+
+Once installed, open Webmin in your browser using your VPS IP address:
 ```
 https://YOUR_VPS_IP_ADDRESS:10000
 ```
 
-### Configure Firewall:
-Run the following commands to allow Webmin through the firewall:
+---
+
+## 🔥 Configure Firewall
+
+Open the required ports to allow Webmin traffic:
+
 ```sh
-ufw allow 10000 >>> 2083
-ufw allow 2083
+sudo ufw allow 10000
+sudo ufw allow 2083
 ```
-Now, you can access Webmin using:
+
+Optionally, you can forward port `10000` to `2083` if desired via firewall/NAT.
+
+Then access Webmin from:
+
 ```
 https://YOUR_VPS_IP_ADDRESS:2083
 ```
 
-### Additional Security:
-- **Two-Factor Authentication (2FA)** is added in Webmin for extra security.
-
 ---
 
-## Authentication Setup
-To enhance authentication security, install **Google Authenticator** for SSH:
+## 🔒 Additional Security: Enable 2FA (Google Authenticator)
 
-### Install Google Authenticator:
+### 📦 Install Google Authenticator
+
 ```sh
 sudo apt install libpam-google-authenticator
 google-authenticator
 ```
 
-### Configure SSH for 2FA:
-Edit the PAM authentication module:
+Follow the prompts and save your backup codes.
+
+---
+
+### ⚙️ Configure PAM for SSH
+
+Edit the PAM config:
 ```sh
-nano /etc/pam.d/sshd
+sudo nano /etc/pam.d/sshd
 ```
-Add the following line:
+Add this line:
 ```
 auth required pam_google_authenticator.so
 ```
 
-### Update SSH Configuration:
+---
+
+### ⚙️ Configure SSH Server
+
+Edit your SSH config:
 ```sh
-nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/sshd_config
 ```
-Set:
+
+Ensure the following lines are present:
 ```
 ChallengeResponseAuthentication yes
 KbdInteractiveAuthentication yes
 ```
 
-### Restart SSH Service:
+Then restart the SSH service:
 ```sh
-sudo systemctl restart sshd.service
-sudo systemctl restart ssh.service
+sudo systemctl restart sshd
 ```
 
 ---
-**Enjoy your secured server setup!** 🔒🚀
 
+## 🧰 Fix Webmin Nginx Module Error (HTML::Entities)
+
+If you encounter this error:
+```
+Can't locate HTML/Entities.pm in @INC...
+```
+
+Install the missing Perl module:
+
+```sh
+sudo apt update
+sudo apt install libhtml-parser-perl
+```
+
+This resolves missing dependency issues for the **Webmin Nginx module**.
 
 ---
 
-## Notes:
-- Ensure you save your Google Authenticator backup codes.
-- Verify Webmin and SSH access before logging out.
+## 📝 Notes
 
+- Save your Google Authenticator backup codes.
+- Before logging out, always test SSH and Webmin login to avoid lockout.
+- Use port `2083` only if you specifically remap it — otherwise `10000` is default.
 
+---
 
-## License
+## 🪪 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details
-
+This project is licensed under the MIT License.  
+See the [LICENSE](LICENSE) file for details.
