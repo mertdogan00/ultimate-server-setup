@@ -1,0 +1,144 @@
+/* Hide the original Webmin logo and hostname */
+.ui--img.img-title {
+    display: none !important;
+}
+
+.ui--strong {
+    display: none !important;
+}
+
+/* Login box - wider, balanced, and responsive */
+.form-signin.session_login.clearfix {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 60px 50px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: 80px auto;
+    transition: all 0.3s ease-in-out;
+    width: 90%; /* Mobile-friendly width */
+    box-sizing: border-box; /* Includes padding in width */
+}
+
+/* Logo container - larger and centered */
+._logo_welcome img {
+    max-width: 320px;
+    width: 100%; /* Logo automatically resizes on smaller screens */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 45px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    background: white;
+    transition: transform 0.3s ease-in-out;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+._logo_welcome img:hover {
+    transform: scale(1.07);
+}
+
+/* Warning box - optional notification */
+.custom-warning-box {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-warning-box:hover {
+    background-color: #ffe8a1;
+}
+
+/* Input boxes - smooth and responsive */
+input.form-control {
+    border-radius: 12px !important;
+    padding: 16px 20px !important;
+    border: 1px solid #ccc !important;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    font-size: 15px !important;
+    width: 100%; /* Always full width on all devices */
+    box-sizing: border-box; /* Includes padding in width */
+}
+
+input.form-control:focus {
+    border-color: #4CA1AF !important;
+    box-shadow: 0 0 6px #4CA1AF !important;
+    outline: none !important;
+}
+
+/* Login button - full width and easy to tap */
+button.ui--button.btn.btn-primary {
+    background-color: #4CA1AF !important;
+    border-radius: 12px !important;
+    padding: 16px 0 !important;
+    border: none !important;
+    font-weight: bold !important;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
+    font-size: 16px !important;
+    cursor: pointer;
+}
+
+button.ui--button.btn.btn-primary:hover {
+    background-color: #357C8D !important;
+}
+
+/* Checkbox section - proper spacing */
+.form-group-remember {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Information text below logo */
+p.ui--p.form-signin-paragraph {
+    color: #333 !important;
+    font-size: 17px !important;
+    text-align: center !important;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* ----------- RESPONSIVE BREAKPOINT ----------- */
+@media (max-width: 480px) {
+    .form-signin.session_login.clearfix {
+        padding: 40px 20px; /* Reduced padding on smaller screens */
+    }
+
+    ._logo_welcome img {
+        max-width: 250px; /* Slightly smaller logo on mobile */
+        padding: 8px;
+    }
+
+    button.ui--button.btn.btn-primary {
+        padding: 14px 0 !important;
+        font-size: 15px !important;
+    }
+
+    input.form-control {
+        padding: 14px 16px !important;
+    }
+
+    .custom-warning-box {
+        font-size: 13px;
+        padding: 10px 15px;
+    }
+
+    p.ui--p.form-signin-paragraph {
+        font-size: 16px !important;
+    }
+}
+
+/* Completely remove the search icon */
+.sidebar-search + .fa-search {
+    display: none !important;
+}
