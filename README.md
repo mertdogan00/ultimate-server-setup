@@ -7,6 +7,7 @@ Includes SSL, Nginx reverse proxy, real IP, 2FA, port customization, UFW, user s
 
 ## 📚 Table of Contents
 
+
 - [🔧 Installation](#-installation)
 - [🧩 Required Packages & Fixes](#-required-packages--fixes)
 - [🚪 First Login to Webmin](#-first-login-to-webmin)
@@ -23,6 +24,7 @@ Includes SSL, Nginx reverse proxy, real IP, 2FA, port customization, UFW, user s
 - [🔁 Redirect Settings](#-redirect-settings)
 - [🔐 Trusted Referrers](#-trusted-referrers)
 - [🔑 Reset Webmin Password](#-reset-webmin-password)
+- [🎨 Webmin Custom CSS](#-webmin-custom-css)
 - [📜 Let's Encrypt SSL Certificates](#-lets-encrypt-ssl-certificates)
 - [📁 Important File Paths](#-important-file-paths)
 - [🤝 Contributing](#-contributing)
@@ -217,6 +219,7 @@ sudo systemctl restart webmin
 
 - GUI path: `Webmin > Webmin Configuration > Trusted Referrers`
 - Add:
+  
   ```
   admin.example.com
   ```
@@ -230,6 +233,43 @@ sudo /usr/share/webmin/changepass.pl /etc/webmin root NEW_PASSWORD
 ```
 
 ---
+
+## 🎨 Webmin Custom CSS
+Webmin allows full interface customization. You can directly paste your CSS code into the theme file.
+
+Edit:
+```
+sudo nano /etc/webmin/authentic-theme/styles.css
+```
+
+Add your custom CSS at the bottom:
+```css
+body {
+    background-color: #1e1e1e !important;
+}
+
+.login-header {
+    color: #ffffff !important;
+}
+```
+
+✅ Save and refresh your browser to apply the changes instantly.
+
+🎯 Alternatively, copy the provided CSS file to Webmin:
+```
+sudo cp webmin-custom.css /etc/webmin/authentic-theme/webmin-custom.css
+```
+
+Add to the bottom of styles.css:
+```css
+@import url('webmin-custom.css');
+```
+
+🌐 [👉 Download My Custom Webmin CSS](https://github.com/yourusername/yourrepository/blob/main/webmin-custom.css)
+
+
+---
+
 
 ## 📜 Let's Encrypt SSL Certificates
 
