@@ -265,7 +265,7 @@ Add to the bottom of styles.css:
 @import url('webmin-custom.css');
 ```
 
-🌐 [👉 Download My Custom Webmin CSS](https://github.com/yourusername/yourrepository/blob/main/webmin-custom.css)
+🌐 [👉 Download My Custom Webmin CSS](https://github.com/mertdogan00/ultimate-server-setup/blob/main/webmin-custom.css)
 
 
 ---
